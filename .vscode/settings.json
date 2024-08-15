@@ -63,5 +63,18 @@
     "*.html": "django-html",
     "*.h": "cpp",
     "iostream": "cpp"
-  }
+  },
+  "terminal.integrated.env.windows": {
+        "LANG": "zh_CN.UTF-8"
+    },
+    "terminal.integrated.env.linux": {
+        "LANG": "zh_CN.UTF-8"
+    },
+    "terminal.integrated.env.osx": {
+        "LANG": "zh_CN.UTF-8"
+    },
+    "terminal.integrated.fontFamily": "Consolas, 'Courier New', monospace,Microsoft YaHei",
+    "terminal.integrated.fontSize": 14,
+     "terminal.integrated.defaultProfile.windows": "PowerShell",
+     "files.encoding": "utf8"
 }
