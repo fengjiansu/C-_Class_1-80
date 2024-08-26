@@ -1,22 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
-string s;
+struct stu
+{
+	int a;
+}s[45];
+char cstr[6];
 int main()
 {
-	cin >> s;
-	int flag = 1;
-	for (int i = 0; i < s.size() - 1; i++)
-	{
-		string ns = s.substr(i, 3);
-		if (ns == "sos")
-		{
-			flag = 0;
-			break;
-		}
-	}
-	if (flag)
-		cout << "NO" << endl;
-	else
-		cout << "YES" << endl;
+	int a = ' ',b='A',c='a';
+	s[0].a = 2;
+	cout<<cstr;
 	return 0;
 }
