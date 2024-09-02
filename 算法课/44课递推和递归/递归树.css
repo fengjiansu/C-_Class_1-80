@@ -1,0 +1,5 @@
+Level 0: T(n)  -> O(1)
+Level 1: T(n/2) -> O(1)
+Level 2: T(n/4) -> O(1)
+...
+Level i: T(n/2^i) -> O(1)
