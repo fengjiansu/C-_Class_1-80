@@ -79,7 +79,10 @@
     "stacktrace": "cpp",
     "regex": "cpp",
     "valarray": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "unordered_map": "cpp",
+    "unordered_set": "cpp",
+    "vector": "cpp"
   },
   "terminal.integrated.env.windows": {
         "LANG": "zh_CN.UTF-8"
