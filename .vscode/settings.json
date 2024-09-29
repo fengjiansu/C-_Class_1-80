@@ -82,7 +82,8 @@
     "complex": "cpp",
     "unordered_map": "cpp",
     "unordered_set": "cpp",
-    "vector": "cpp"
+    "vector": "cpp",
+    "ostream": "cpp"
   },
   "terminal.integrated.env.windows": {
         "LANG": "zh_CN.UTF-8"
