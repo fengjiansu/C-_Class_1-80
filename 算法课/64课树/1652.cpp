@@ -8,7 +8,7 @@ typedef pair<int, int> pii;
 #define S second
 #define MP make_pair
 #define PB push_back
-#define REP(i,a,b) for(int i=a;i<b;i++)
+#define REP(i, a, b) for (int i = a; i < b; i++)
 
 /* void dfs(int u, vector<vector<int>> &tree)
 {
@@ -36,18 +36,25 @@ int bfs(int u, vector<vector<int>> &tree)
 {
     queue<int> q;
     q.push(u);
+    int max_depth = 0;
     while (!q.empty())
     {
-        int v = q.front();
-        q.pop();
-        cout << v << " ";
-        for (auto  &w : tree[v])
+        max_depth++;
+        for (int i = 0; i < q.size(); i++)
         {
-            q.push(w);
+            int v = q.front();
+            q.pop();
+
+            // 遍历该层所有节点
+            for (auto &w : tree[v])
+            {
+                q.push(w);
+            }
         }
     }
+    return max_depth;
 }
-/* 
+/*
 void bfs(int u, vector<vector<int>> &tree)
 {
     queue<int> q;
@@ -57,6 +64,7 @@ void bfs(int u, vector<vector<int>> &tree)
         int v = q.front();
         q.pop();
         cout << v << " ";
+        //处理节点v 不关心层次信息，只关心子节点
         for (auto  &w : tree[v])
         {
             q.push(w);
@@ -77,11 +85,11 @@ int main()
     {
         int p;
         cin >> p;
-        tree[p].push_back(i);//i的父节点是p
+        tree[p].push_back(i); // i的父节点是p
     }
     int max_depth = 0;
-    dfs(1, tree, 1, max_depth); 
+    dfs(1, tree, 1, max_depth);
     // 从根节点开始，初始深度为1
-    cout<<max_depth<<"\n";
+    cout << max_depth << "\n";
     return 0;
 }

@@ -83,7 +83,8 @@
     "unordered_map": "cpp",
     "unordered_set": "cpp",
     "vector": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "iosfwd": "cpp"
   },
   "terminal.integrated.env.windows": {
         "LANG": "zh_CN.UTF-8"
