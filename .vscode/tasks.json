@@ -9,6 +9,8 @@
                 "-fexec-charset=UTF-8",
                 "-fdiagnostics-color=always",
                 "-g",
+                "-std=c++11",
+                "-I${workspaceFolder}/testlib/",
                 "\"${file}\"",
                 "-o",
                 "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
@@ -32,6 +34,8 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+                "-std=c++11",
+                "-I${workspaceFolder}/testlib/",
                 "\"${file}\"",
                 "-o",
                 "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
@@ -47,8 +51,8 @@
         }
     ],
     "terminal.integrated.env.windows": {
-    "LANG": "en_US.UTF-8"
-},
-"files.encoding": "utf8",
+        "LANG": "en_US.UTF-8"
+    },
+    "files.encoding": "utf8",
     "version": "2.0.0"
 }
