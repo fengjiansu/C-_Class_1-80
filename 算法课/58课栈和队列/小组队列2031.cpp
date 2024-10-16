@@ -12,8 +12,8 @@ int main()
         cout << "Scenario #" << cnt++ << endl;
         // 用数组来存储每个元素所属的团队编号
         int team[MAX_ELEMENT + 1];
-        deque<int> q; //存储团队编号的顺序
-        vector<deque<int>> v(t); // 通过下标访问
+        queue<int> q; //存储团队编号的顺序
+        vector<queue<int>> v(t); // 通过下标访问
         // 标记当前团队是否在队列中，避免重复入队
         bool f[t];
         //fill 函数是memset的替换
@@ -39,20 +39,20 @@ int main()
                 int id = team[x];
                 if(!f[id])
                 {
-                    q.push_back(id);
+                    q.push(id);
                     f[id] = true;
                 }
-                v[id].push_back(x);
+                v[id].push(x);
             }
             else if(str=="DEQUEUE")
             {
                 int id = q.front(); //队首团队编号
 
                 cout<<v[id].front()<<endl;
-                v[id].pop_front();
+                v[id].pop();
                 if(v[id].empty())
                 {
-                    q.pop_front();
+                    q.pop();
                     f[id] = false;
                 }
             }
