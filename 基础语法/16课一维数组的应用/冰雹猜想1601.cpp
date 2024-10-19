@@ -20,7 +20,7 @@ int main()
     int i = 0;
     while(n!=1)
     {
-        a[i] = n;
+        a[i] = n; //讲清楚怎么用数组保存
         i++;
         if(n%2==0)
         {
