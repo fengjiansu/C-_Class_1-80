@@ -66,7 +66,7 @@ std::map<int, int> primeFactorization(int n) {
     return factors;
 }
 
-// 找到最大的 p
+ 找到最大的 p
 int findLargestP(int n) {
     std::map<int, int> factors = primeFactorization(n);
     std::vector<int> exponents;

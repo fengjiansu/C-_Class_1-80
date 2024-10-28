@@ -37,7 +37,7 @@ typedef pair<int, int> pii;
 84=2^2*3^1*7^1¡£
 
  */
-map<int, int> prime_factorize(int n)
+map<int, int> fun(int n)
 {
     map<int, int> res;
     for (int i = 2; i * i <= n; i++)
@@ -61,6 +61,12 @@ int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+    int n = 84;
+    map<int,int> res;
+    res = fun(n);
+    for(auto &it:res)
+    {
+        cout<<it.first<<":"<<it.second<<endl;
+    }
     return 0;
 }

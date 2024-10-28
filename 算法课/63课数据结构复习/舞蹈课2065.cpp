@@ -94,7 +94,7 @@ struct Pair {
         if (diff == other.diff) {
             return left->index > other.left->index;  // 如果差值相等，选择最左边的
         }
-        return diff > other.diff;  // 小根堆：差值小的优先
+        return diff > other.diff;  // 小根堆：差值小的优先 返回true时第一个元素会被放在后面
     }
 };
 

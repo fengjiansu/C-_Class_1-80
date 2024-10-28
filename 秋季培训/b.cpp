@@ -3,31 +3,38 @@
 using namespace std;
 typedef long long ll;
 typedef vector<int> vi;
-typedef vector<ll> vl;
-typedef vector<double> vd;
 typedef pair<int, int> pii;
 #define F first
 #define S second
 #define MP make_pair
 #define PB push_back
 #define REP(i,a,b) for(int i=a;i<b;i++)
-#define RFOR(it,c) for(auto &it:c)
-
+const int N = 1e5+5;
+bool fx[N];
+bool fy[N];
 int main()
 {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-	vector<ll> a(21,1);
-        vector<ll> s(21,0);
-        map<ll,ll> mp;
-        REP(i,1,21)
-        {
-            s[i] = s[i-1]+a[i];
-            mp[s[i]] = i+1;
-        }
-		RFOR(x,s)
+	ll n,m;
+	cin>>n>>m;
+	ll wx=n,wy=n;
+	for(int i=1;i<=m;i++)
+	{
+		ll x,y;
+		cin>>x>>y;
+		
+		if(!fx[x])
 		{
-			cout<<x<<" ";
+			wx--;
+			fx[x] = true;
 		}
+		if(!fy[y])
+		{
+			wy--;
+			fy[y] = true;
+		}
+		cout<<wx*wy<<" ";
+	}
 	return 0;
 }

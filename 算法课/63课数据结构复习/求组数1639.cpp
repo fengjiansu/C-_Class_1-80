@@ -29,17 +29,20 @@ int main()
     sort(x.begin(), x.end());
 
     ll ans = 0;
-    int j = 0;
+    int l = 0;
+    int r = 0;
 
     // 双指针遍历
-    for (int i = 0; i < n; ++i) {
-        // 更新 j，找到最大的满足 x[j] - x[i] <= k 的位置
-        while (j < n && x[j] - x[i] <= k) {
-            ++j;
+    while(l<n&&r<n)
+    {
+        while(r<n&&x[r]-x[l]<k)
+        {
+            r++;
         }
-        // 累加满足条件的数对数量
-        ans += (j - i - 1);
+        ans += r-l;
+        l++;
     }
+
 
     cout << ans << endl;
     return 0;

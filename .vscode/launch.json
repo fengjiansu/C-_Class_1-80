@@ -11,7 +11,7 @@
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "D:\\MSYS2\\mingw64\\bin\\gdb.exe",
+            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
@@ -33,11 +33,11 @@
             "program": "\"${fileDirname}\"\"\\${fileBasenameNoExtension}.exe\"",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "D:/MSYS2/mingw64/bin",
+            "cwd": "c:/mingw64/bin",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "D:\\MSYS2\\mingw64\\bin\\gdb.exe",
+            "miDebuggerPath": ":C\\mingw64\\bin\\gdb.exe",
             "setupCommands": [
                 {
                     "description": "为 gdb 启用整齐打印",
