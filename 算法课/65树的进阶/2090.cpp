@@ -21,6 +21,7 @@ void dfs(int root,int depth)
     dep[root] = depth;
     max_depth = max(max_depth, depth);
     if(tree[root].empty()) return;
+    
     if (tree[root].size() > 0) dfs(tree[root][0], depth + 1); // 左子节点
     if (tree[root].size() > 1) dfs(tree[root][1], depth + 1); // 右子节点
 }
@@ -48,20 +49,24 @@ void bfs(int root)
 
 int lca(int u, int v)
 {
-    if (dep[u] < dep[v]) swap(u, v);
-    while (dep[u] > dep[v]) u = parent[u];
-    while (u != v) {
+    if(dep[u]<dep[v]) swap(u,v);
+    while(dep[u]>dep[v])
+    {
+        u = parent[u];
+    }
+    while(u!=v)
+    {
         u = parent[u];
         v = parent[v];
     }
     return u;
 }
 
- int getd(int u, int v)
+int getd(int u, int v)
 {
     int lcaNode = lca(u,v);
     return (dep[u]-dep[lcaNode])*2+(dep[v]-dep[lcaNode]);
-} 
+}
 
 int main()
 {
@@ -70,42 +75,22 @@ int main()
     int n;
     cin>>n;
     tree.resize(n+1);
-    parent.resize(n+1,-1);
-    dep.resize(n+1,1);
+    parent.resize(n+1);
+    dep.resize(n+1);
+    parent[1] = -1;
     int a,b;
-    REP(i,1,n)
+    REP(i,0,n-1)
     {
         
         cin>>a>>b;
         tree[a].PB(b);
         parent[b] = a;
     }
-    
+    int x,y;
+    cin>>x>>y;
     dfs(1,1);
     bfs(1);
     cout<<max_depth<<endl<<max_breadth<<endl;
-    int x,y;
-    cin >> x >> y;
-    cout<<getd(x,y)<<endl;
-	/* int ans = 0;
-	int path = 2;
-	if(dep[y] > dep[x])
-	{
-		swap(x, y);
-		path = 1;
-
-	}
-	while(dep[x] > dep[y])
-	{
-		x = parent[x];
-		ans += path;
-	}//x节点沿父节点向上直到与y同一深度
-	while(x != y)
-	{
-		x = parent[x];
-		y = parent[y];
-		ans += 3;
-	}//x、y一同向上直到相遇
-	cout << ans << endl;//输出x、y的距离 */
+    cout<<getd(x,y);
     return 0;
 }
