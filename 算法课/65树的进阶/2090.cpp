@@ -46,7 +46,9 @@ void bfs(int root)
         }
     }
 }
-
+/* 
+确保两个节点在同一深度，如果不在，则将深度较深的节点逐级向上移动。
+同步向上移动 u 和 v，直到找到最低公共祖先 */
 int lca(int u, int v)
 {
     if(dep[u]<dep[v]) swap(u,v);
