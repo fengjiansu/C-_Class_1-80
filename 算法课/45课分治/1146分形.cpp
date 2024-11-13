@@ -42,7 +42,9 @@ int main() {
     int n;
     cin >> n;
     vector<vector<char>> flag(pow(3,n-1),vector<char>(pow(3,n-1),' '));
+
     solve(flag,0,0,n);
+    
     for(int i=0;i<pow(3,n-1);i++){
         for(int j=0;j<pow(3,n-1);j++){
             cout << flag[i][j];

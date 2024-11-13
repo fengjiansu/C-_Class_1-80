@@ -32,7 +32,7 @@ typedef pair<int, int> pii;
 #define REP(i,a,b) for(int i=a;i<b;i++)
 
 // 分治法求解最大连续和
-int maxCross(const vector<int>& arr, int left, int mid, int right) {
+int maxCross( vector<int>& arr, int left, int mid, int right) {
     // 从中间向左找最大和
     int leftSum = INT_MIN, sum = 0;
     for (int i = mid; i >= left; i--) {
@@ -71,6 +71,28 @@ max 函数在接受初始化列表时，会遍历其中的所有元素，返回其中的最大值。
 这种语法使得我们可以轻松比较多个值，而不需要嵌套的 max 函数调用。
      */
     return max({maxLeft, maxRight,crossMax});
+}
+
+int fun(vi& v, int l,int mid, int r)
+{
+    if(l == r) return v[l];
+    fun(v, l, mid, mid);
+    // 从中间向左找最大和
+    int leftSum = INT_MIN, sum = 0;
+    for (int i = mid; i >= l; i--) {
+        sum += v[i];
+        leftSum = max(leftSum, sum);
+    }
+
+    // 从中间向右找最大和
+    int rightSum = INT_MIN;
+    sum = 0;
+    for (int i = mid + 1; i <= r; i++) {
+        sum += v[i];
+        rightSum = max(rightSum, sum);
+    }
+    // 返回跨越中间的最大和
+    return leftSum + rightSum;
 }
 int main()
 {
