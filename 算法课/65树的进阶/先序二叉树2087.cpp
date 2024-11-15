@@ -1,63 +1,38 @@
-#include <bits/stdc++.h>
-
+#include <iostream>
+#include <string>
 using namespace std;
-typedef long long ll;
-typedef vector<int> vi;
-typedef pair<int, int> pii;
-#define F first
-#define S second
-#define MP make_pair
-#define PB push_back
-#define REP(i,a,b) for(int i=a;i<b;i++)
 
-/* 
-从后序遍历的最后一个元素找到根节点。
-在中序遍历中确定这个根节点的位置。
-分割中序遍历成左子树和右子树部分。
-根据左子树和右子树的大小，分割后序遍历。
-递归处理左右子树。
-输出根节点 + 左子树 + 右子树的顺序，就是先序遍历。
+// 递归函数，通过中序和后序遍历的区间构建先序遍历
+void buildPreOrder(const string &inOrder, const string &postOrder, int inL, int inR, int postL, int postR) {
+    if (inL > inR || postL > postR) return;  // 如果子树为空，返回
 
+    // 后序遍历的最后一个元素是当前子树的根节点
+    char root = postOrder[postR];
+    cout << root;  // 输出根节点（先序遍历）
 
- */
+    // 在中序遍历中找到根节点的位置
+    int rootPos = inL;
+    while (inOrder[rootPos] != root) rootPos++;
 
+    // 计算左子树的大小
+    int leftSize = rootPos - inL;
 
-string fun(string in, string post)
-{
-    if(in.size()==0)
-        return "";
-    char root = post.back();
-    //找左子树
-    int rootPos= in.find(root);
+    // 递归处理左子树
+    buildPreOrder(inOrder, postOrder, inL, rootPos - 1, postL, postL + leftSize - 1);
 
-    string l_in = in.substr(0, rootPos);
-    string r_in = in.substr(rootPos + 1);
-
-    string l_post = post.substr(0, l_in.size());
-    string r_post = post.substr(l_in.size(), r_in.size());
-
-    string l_pre=fun(l_in, l_post);
-    string r_pre=fun(r_in, r_post);
-    return root+l_pre+r_pre;
+    // 递归处理右子树
+    buildPreOrder(inOrder, postOrder, rootPos + 1, inR, postL + leftSize, postR - 1);
 }
 
-void build(string &in,string &post,int l_in,int r_in,int l_post,int r_post)
-{
-    if(l_in>r_in || l_post>r_post) return;
-    char root = post[r_post];
-    cout<<root;
-    int rootPos= in.find(root);
-    int lSize=rootPos-l_in;
-    build(in,post,l_in,rootPos-1,l_post,l_post+lSize-1);
-    build(in,post,rootPos+1,r_in,l_post+lSize,r_post-1);
-}
+int main() {
+    string inOrder, postOrder;
+    
+    // 输入中序和后序遍历
+    cin >> inOrder >> postOrder;
+    
+    // 调用递归函数构建并输出先序遍历
+    buildPreOrder(inOrder, postOrder, 0, inOrder.size() - 1, 0, postOrder.size() - 1);
+    cout << endl;
 
-int main()
-{
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    string in, post;
-    cin >> in >> post;
-    cout<<fun(in, post);
     return 0;
 }

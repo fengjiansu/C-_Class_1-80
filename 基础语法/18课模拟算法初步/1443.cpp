@@ -40,8 +40,10 @@ int main()
     {
         sum+=a[j];
         j++;
-        j = j%n;
+        j = j%n;//下标从0开始很轻易的达到
     }
+    if(j==0) j++;// 只有1个特殊处理
     cout<<j;
+
    return 0;
 }
