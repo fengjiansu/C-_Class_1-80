@@ -62,6 +62,7 @@
     "*.jsp": "jsp",
     "*.html": "django-html",
     "*.h": "cpp",
+    "*.sh": "shellscript",
     "iostream": "cpp",
     "string": "cpp",
     "format": "cpp",
@@ -152,7 +153,9 @@
     "thread": "cpp",
     "typeindex": "cpp",
     "typeinfo": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "generator": "cpp",
+    "text_encoding": "cpp"
   },
   "terminal.integrated.env.windows": {
         "LANG": "zh_CN.UTF-8"
