@@ -19,7 +19,7 @@ y+x =a
 y-x = b;
 x=a-y;
 x= y-b;
-y= (a+b)/2  xС  yС
+y= (a+b)/2  x小  y也小
 */
 set<int> se;
 void fun(int n)
@@ -28,8 +28,8 @@ void fun(int n)
 	{
 		if(n%i==0)
 		{
-			ll temp = i+n/i;
-			if(temp%2==0)
+			ll temp = i+n/i; //i就是a n/i就是b
+			if(temp%2==0) //y是整数
 			{
 				se.insert(temp/2);
 			}
@@ -52,4 +52,4 @@ int main()
     }
      cout<<res<<endl;
     return 0;
-    }
+}
