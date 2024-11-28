@@ -33,7 +33,7 @@ void solve(vector<vector<char>> &flag,int x,int y,int n){
     int k = pow(3,n-2);// 计算当前递归层的偏移量
     solve(flag,x,y,n-1);    // 左上
     solve(flag,x,y+2*k,n-1);// 右上
-    solve(flag,x+k,y+k,n-1);// 中间
+    solve(flag,x+2*k,y+2*k,n-1);// 中间
     solve(flag,x+2*k,y,n-1); // 左下
     solve(flag,x+2*k,y+2*k,n-1);// 右下
 }
