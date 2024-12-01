@@ -5,7 +5,7 @@ using namespace std;
 
 int count_substr(const string &s, int k)
 {
-    int n = s.size(), l = 0, cnt = 0, res = 0;
+    int n = s.size(), l = 0, cnt = 0;long long res = 0;
     vector<int> freq(26, 0); // 记录每个字母的频率
     /*
     扩展右边界 r：

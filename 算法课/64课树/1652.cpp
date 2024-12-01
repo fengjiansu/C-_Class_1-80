@@ -40,7 +40,8 @@ int bfs(int u, vector<vector<int>> &tree)
     while (!q.empty())
     {
         max_depth++;
-        for (int i = 0; i < q.size(); i++)
+        int size = q.size();
+        for (int i = 0; i < size; i++)
         {
             int v = q.front();
             q.pop();
