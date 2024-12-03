@@ -22,7 +22,7 @@ void print_subset(vector<int> &A,int n)
     
      
     //如果A为空，那么从1开始
-    
+ 
     //如果A不为空，那么从A的最后一个元素的下一个开始
     int s = A.size()?A.back()+1:1;//
     //通过循环控制递归

@@ -13,91 +13,64 @@ echo "开始生成测试点..."
 # 测试点 1：最小输入规模
 echo "生成测试点 $test_num：最小输入规模"
 cat > test_cases/test$test_num.in << EOF
-2 1
-5
-10
+2 2
+1 2
 EOF
 let test_num++
 
-# 测试点 2：小规模，有高有低
-echo "生成测试点 $test_num：小规模，有高有低"
+# 测试点 2：小规模，有禁忌规则
+echo "生成测试点 $test_num：小规模，有禁忌规则"
 cat > test_cases/test$test_num.in << EOF
 3 2
-10 20
-5 25
-1 30
+1 2 3
 EOF
 let test_num++
 
-# 测试点 3：全高分题目
-echo "生成测试点 $test_num：全高分题目"
+# 测试点 3：小规模，无禁忌规则
+echo "生成测试点 $test_num：小规模，无禁忌规则"
 cat > test_cases/test$test_num.in << EOF
-4 3
-50 50 50
-50 50 50
-50 50 50
-50 50 50
+3 2
+1 3 5
 EOF
 let test_num++
 
-# 测试点 4：随机分数
-echo "生成测试点 $test_num：随机分数"
-cat > test_cases/test$test_num.in << EOF
-5 4
-10 15 20 25
-30 5 10 40
-25 30 15 20
-35 25 30 10
-20 15 10 25
-EOF
-let test_num++
-
-# 测试点 5：分数递增
-echo "生成测试点 $test_num：分数递增"
-cat > test_cases/test$test_num.in << EOF
-6 2
-1 2
-3 4
-5 6
-7 8
-9 10
-11 12
-EOF
-let test_num++
-
-# 测试点 6：分数递减
-echo "生成测试点 $test_num：分数递减"
-cat > test_cases/test$test_num.in << EOF
-6 2
-12 11
-10 9
-8 7
-6 5
-4 3
-2 1
-EOF
-let test_num++
-
-# 测试点 7：不同分数，多个最大值
-echo "生成测试点 $test_num：不同分数，多个最大值"
-cat > test_cases/test$test_num.in << EOF
-4 3
-20 30 10
-30 20 10
-10 30 20
-20 10 30
-EOF
-let test_num++
-
-# 测试点 8：相同分数
-echo "生成测试点 $test_num：相同分数"
+# 测试点 4：中等规模，间隔较大
+echo "生成测试点 $test_num：中等规模，间隔较大"
 cat > test_cases/test$test_num.in << EOF
 5 3
-10 10 10
-10 10 10
-10 10 10
-10 10 10
-10 10 10
+1 3 5 7 9
+EOF
+let test_num++
+
+# 测试点 5：中等规模，部分距离很大
+echo "生成测试点 $test_num：中等规模，部分距离很大"
+cat > test_cases/test$test_num.in << EOF
+6 3
+1 2 10 12 15 20
+EOF
+let test_num++
+
+# 测试点 6：大规模，随机分布
+echo "生成测试点 $test_num：大规模，随机分布"
+cat > test_cases/test$test_num.in << EOF
+10 5
+1 2 3 10 20 50 80 100 200 300
+EOF
+let test_num++
+
+# 测试点 7：最大坐标差
+echo "生成测试点 $test_num：最大坐标差"
+cat > test_cases/test$test_num.in << EOF
+10 5
+1 100 1000 10000 100000 1000000 10000000 100000000 1000000000 10000000000
+EOF
+let test_num++
+
+# 测试点 8：高度相差小
+echo "生成测试点 $test_num：高度相差小"
+cat > test_cases/test$test_num.in << EOF
+4 2
+1 1 2 2
 EOF
 let test_num++
 
@@ -106,7 +79,7 @@ echo "生成测试点 $test_num：非常大的数据"
 cat > test_cases/test$test_num.in << EOF
 50 10
 EOF
-for ((i=1; i<=50; i++)); do
+for i in $(seq 1 50); do
     echo -n "$((i*100000)) " >> test_cases/test$test_num.in
 done
 let test_num++

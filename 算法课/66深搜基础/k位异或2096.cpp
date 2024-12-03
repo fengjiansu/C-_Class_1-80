@@ -30,7 +30,6 @@ void fun(int n,vector<int> &v)
 void dfs(int cur,int cnt,vector<int> &va,vector<int> &vb)
 {
     if(cnt==k)
-    {
         int sum = 0;
         for(int i=0;i<va.size();i++)
         {
