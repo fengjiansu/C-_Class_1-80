@@ -57,7 +57,7 @@ void print_permutation(vector<int> &A, int n)
             {
                 if (A[j] == i)
                     ok = 0;
-            }
+            } //这个时候的时间复杂度是n*k 优化一下 把这个循环优化掉
             if (ok)
             {
                 A.PB(i);
