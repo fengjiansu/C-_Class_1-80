@@ -1,0 +1,1 @@
+{"name":"Local: 约瑟夫环问题2020","url":"d:\\C++_Code\\classin\\算法课\\60链表\\约瑟夫环问题2020.cpp","tests":[{"id":1733724170433,"input":"5 2\nBob\nJoy\nCindy\nTom\nJerry","output":"Joy Tom Bob Jerry Cindy"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\C++_Code\\classin\\算法课\\60链表\\约瑟夫环问题2020.cpp","group":"local","local":true}
