@@ -46,6 +46,7 @@ void bfs(int root)
     }
 }
 
+
 int lca(int u, int v)
 {
     if (dep[u] < dep[v]) swap(u, v);

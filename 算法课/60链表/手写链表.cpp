@@ -38,7 +38,7 @@ struct LinkList
         int cur = head;
         for(int i=0;i<pos-1&&cur!=-1;i++)
         {
-            cur = nxt[cur];
+            cur = nxt[cur];nx
         }
         if(cur == -1) return;
         val[cnt] = x;

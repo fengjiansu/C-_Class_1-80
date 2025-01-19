@@ -17,7 +17,7 @@ int k,a,b;
 int res = 0;
 bool f[10];
 //Œª‘ÀÀ„∑®
-void fun(int n,vector<int> &v)
+void fun(int n,vector<int> &v)  
 {
     //v.clear();
     for (int i = 0; i < 8; i++) {

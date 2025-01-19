@@ -27,11 +27,11 @@ int main()
 
      int n,m;
     cin>>n>>m;//输入n、m
-    for(int i=1;i<=n;i++)//输入n个人的名字   
+    for(int i=1;i<=n;i++)//输入n个人的名字    编号从1到n即为每个节点的编号
     {
     	cin>>val[i];
     }
-    for(int i=0;i<n;i++)//初始化
+    for(int i=0;i<n;i++)//初始化 从0开始初始化
     	nxt[i]=i+1;
 	nxt[n]=1;
 	int p=0;//从0开始  因为如果k==1的话 p如果从1开始  会把第一个节点跳过,所以第一个节点之前保留一个空位

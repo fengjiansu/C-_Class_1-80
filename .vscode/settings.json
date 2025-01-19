@@ -155,7 +155,8 @@
     "typeinfo": "cpp",
     "variant": "cpp",
     "generator": "cpp",
-    "text_encoding": "cpp"
+    "text_encoding": "cpp",
+    "print": "cpp"
   },
   "terminal.integrated.env.windows": {
         "LANG": "zh_CN.UTF-8"

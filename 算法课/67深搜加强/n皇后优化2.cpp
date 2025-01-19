@@ -25,13 +25,10 @@ n皇后问题
  */
 int cnt = 0;
 int num = 0;
-bool b[20];
-bool v[3][40];// visited预先记录哪些列、主对角线和副对角线已经被占用
-/* 
-v[0][i]：表示第 i 列是否已被占用。
-v[1][i-row + n]：表示第 i 列是否在主对角线（y-x）上被占用。
-v[2][row + i]：表示第 i 列是否在副对角线（x）上被占用。
- */
+bool b[20]; // 标记目前皇后所在的列
+bool col[20]; // 标记每列是否有皇后
+bool d1[40]; // 标记主对角线是否有皇后
+bool d2[40]; // 标记副对角线是否有皇后
 
 // 超时 push pop 操作
 vi A;
@@ -56,7 +53,7 @@ void dfs( int row)
     }
 
     //int x = A.size() ? A.back() + 1 : 1;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) 
     {
         /*
         因为是横着遍历的 所以同一行的情况就不用判断
@@ -68,16 +65,13 @@ void dfs( int row)
         // 用二维数组 保存每个位置是否可以被放入
         
         
-        if (v[0][i] || v[1][i - row + n] || v[2][row + i])
+        if (col[i] || d1[i - row + n] || d2[row + i])
             continue;
-        v[0][i] = true;
-        v[1][i-row + n] = true; //主对角线 i表示y row表示x 因为y-x有可能为负数 所以要加上n
-        v[2][row + i] = true;
+        
         A[row] = i;
+        col[i] = d1[i - row + n] = d2[row + i] = true;
         dfs(row+1);
-        v[0][i] = false;
-        v[1][i-row + n] = false; 
-        v[2][row + i] = false;
+        col[i] = d1[i - row + n] = d2[row + i] = false;
     }
 }
 int main()

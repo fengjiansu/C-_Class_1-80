@@ -8,15 +8,14 @@ void buildPreOrder(const string &inOrder, const string &postOrder, int inL, int 
 
     // 后序遍历的最后一个元素是当前子树的根节点
     char root = postOrder[postR];
-    cout << root;  // 输出根节点（先序遍历）
+    cout << root;  // 输出根节点（先序遍历）>人
 
     // 在中序遍历中找到根节点的位置
     int rootPos = inL;
     while (inOrder[rootPos] != root) rootPos++;
 
     // 计算左子树的大小
-    int leftSize = rootPos - inL;
-
+    int leftSize = rootPos - i
     // 递归处理左子树
     buildPreOrder(inOrder, postOrder, inL, rootPos - 1, postL, postL + leftSize - 1);
 

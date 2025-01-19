@@ -1,77 +1,99 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-static int L[100000+5], R[100000+5]; // left[i], right[i] 分别表示 i号同学左右相邻的编号
-static bool removed[100000+5];       // 标记某个同学是否已被移除
+// 最大可能的人数
+static const int MAXN = 100000 + 5;
+
+int Lch[MAXN], Rch[MAXN]; // 分别存储每个人的左邻和右邻
+bool inQueue[MAXN];       // 标记该编号的同学是否仍在队列
 
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int N; cin >> N;
-    // 初始化：只有1号同学
-    // 1号左右都为-1，表示只有1号一个人在队列中
-    L[1] = -1;
-    R[1] = -1;
+    int N;
+    cin >> N;
 
-    // 从2号同学开始插入
+    // 初始化：只有 1 号同学在队列中
+    int head = 1;
+    Lch[1] = 0;     // 表示 1 号左边无人
+    Rch[1] = 0;     // 表示 1 号右边无人
+    inQueue[1] = true;
+
+    // 从 2 号开始逐个插入
     for (int i = 2; i <= N; i++) {
-        int k, p; cin >> k >> p;
+        int k, p;
+        cin >> k >> p; // 读入要插入到 k 的左边 (p=0) 或右边 (p=1)
+        inQueue[i] = true;
+
         if (p == 0) {
-            // i插入到k的左边
-            int leftNeighbor = L[k];  // k的左邻居
-            L[i] = leftNeighbor;      // i的左为原来的leftNeighbor
-            R[i] = k;                 // i的右为k
-            L[k] = i;                 // k的左为i
-            if (leftNeighbor != -1) {
-                R[leftNeighbor] = i;  // 原左邻居的右改为i
+            // 插入到 k 的左边
+            int leftK = Lch[k];
+            Rch[i] = k;
+            Lch[i] = leftK;
+
+            // 如果 k 原本有左邻，则需要让那位左邻的右邻变为 i
+            if (leftK != 0) {
+                Rch[leftK] = i;
+            } else {
+                // k 原本是队列最左端，现在 i 成为新的左端
+                head = i;
             }
+            // k 的左邻更新为 i
+            Lch[k] = i;
+
         } else {
-            // i插入到k的右边
-            int rightNeighbor = R[k]; // k的右邻居
-            R[i] = rightNeighbor;     // i的右为原来的rightNeighbor
-            L[i] = k;                 // i的左为k
-            R[k] = i;                 // k的右为i
-            if (rightNeighbor != -1) {
-                L[rightNeighbor] = i; // 原右邻居的左改为i
+            // 插入到 k 的右边
+            int rightK = Rch[k];
+            Lch[i] = k;
+            Rch[i] = rightK;
+
+            // 如果 k 原本有右邻，则需要让那位右邻的左邻变为 i
+            if (rightK != 0) {
+                Lch[rightK] = i;
             }
+            // k 的右邻更新为 i
+            Rch[k] = i;
         }
     }
 
-    int M; cin >> M;
-    for (int i = 0; i < M; i++) {
-        int x; cin >> x;
-        if (!removed[x]) {
-            // 删除x号同学
-            int leftN = L[x];
-            int rightN = R[x];
-            if (leftN != -1) R[leftN] = rightN;
-            if (rightN != -1) L[rightN] = leftN;
-            removed[x] = true;
+    // 读入要删除的同学数量 M
+    int M;
+    cin >> M;
+
+    while (M--) {
+        int x;
+        cin >> x;
+
+        // 若 x 已经不在队列中，则忽略
+        if (!inQueue[x]) continue;
+
+        // 否则执行删除操作
+        inQueue[x] = false;
+        int left = Lch[x], right = Rch[x];
+
+        // 让 x 的左邻和右邻互相连接
+        if (left != 0) Rch[left] = right;
+        if (right != 0) Lch[right] = left;
+
+        // 如果 x 恰好是 head，则要更新 head
+        if (x == head) {
+            head = right; // 若 right 为 0，则队列已空
         }
+
+        // 标记 x 已失效（可选）
+        Lch[x] = 0;
+        Rch[x] = 0;
     }
 
-    // 找到最左侧的同学
-    int start = 1;
-    // 不断向左找到最左边
-    while (L[start] != -1) {
-        start = L[start];
-    }
-
-    // 从start开始向右输出未被删除的同学
-    // 有可能start已经被删除了，则需要找到第一个未删除的在右边的同学
-    while (start != -1 && removed[start]) {
-        start = R[start];
-    }
-
-    // 顺着right指针遍历
-    bool first = true;
-    for (int cur = start; cur != -1; cur = R[cur]) {
-        if (!removed[cur]) {
-            if (!first) cout << " ";
-            cout << cur;
-            first = false;
-        }
+    // 最后从 head 开始，依次向右遍历输出
+    int cur = head;
+    bool firstPrint = true;
+    while (cur != 0) {
+        if (!firstPrint) cout << " ";
+        firstPrint = false;
+        cout << cur;
+        cur = Rch[cur];
     }
     cout << "\n";
 

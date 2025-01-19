@@ -12,11 +12,6 @@ typedef pair<int, int> pii;
 #define PB push_back
 #define REP(i,a,b) for(int i=a;i<b;i++)
 #define RFOR(it,c) for(auto &it:c)
-struct  Node
-{
-    int data;
-    Node *next;
-};
 
 int main()
 {
