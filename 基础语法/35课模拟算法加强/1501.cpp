@@ -9,7 +9,7 @@ typedef pair<int, int> pii;
 #define MP make_pair
 #define PB push_back
 #define REP(i, a, b) for (int i = a; i < b; i++)
-int fun1(int x, int y) // 把y从x进制转换为10进制
+int f1(int x, int y) // 把y从x进制转换为10进制
 {
     int ans = 0;
     int t = 1;

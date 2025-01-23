@@ -18,7 +18,6 @@ int main()
     cin >> s;
     for (int i = 1; i < s.size(); i++)
     {
-        // 不能整除直接排除
         if (s.size() % i != 0)
             continue;
         bool flag = true;
