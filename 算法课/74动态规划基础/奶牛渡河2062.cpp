@@ -36,7 +36,7 @@ int main(){
         return (long long)M + pre[k];
     }; */
 
-    // dp[j]表示把j头牛送到对岸且木筏已经回到原岸的最小时间
+    // dp[i]表示把i头牛送到对岸且木筏已经回到原岸的最小时间
     vector<long long> dp(N+1, LLONG_MAX);
     dp[0] = 0;
 

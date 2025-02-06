@@ -29,12 +29,11 @@ int main()
     {
         cin>>b[i];
     }
-    int max_r = -1;
-    bool find = false;
-    REP(i,0,1000001)
+    int max_r = INT_MIN;
+    REP(i,0,1001)
     {
         bool f = true;
-        int max_b = 1e6;
+        int max_b = 1000;
         REP(j,0,n)
         {
             if(a[j]*i >q[j])
@@ -44,27 +43,18 @@ int main()
             }
             if(b[j]>0)
             {
-                if(q[j] - a[j] * i < 0)
-                {
-                    f = false;  // 如果 q[j] - a[j] * i 为负，说明当前 i 不可能成立
-                    break;
-                }
-                
                 max_b = min(max_b,(q[j]-a[j]*i)/b[j]);
             }
             
         }
         if(f)
         {
-            find= true;
             max_r = max(max_r,i+max_b);
         }
 
         
     }
-    if(find)
-    cout<<max_r<<endl;
-    else cout<<0;
 
-    return 0;
-}
+    cout<<max_r<<endl;
+
+    

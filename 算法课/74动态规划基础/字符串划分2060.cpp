@@ -53,11 +53,14 @@ dp[i] 表示前 i 个字符（即 s[0..i-1]）最少可以划分成的回文子串数量。
 空字符串不需要划分，dp[0] = 0。
 
  */
-
 int main()
 {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    
+    int n;cin>>n;
+    string s;cin>>s;
+    vector<bool> isp(n,vector<bool>(n,false));
+    // DP 处理回文子串
+    for()
     return 0;
 }

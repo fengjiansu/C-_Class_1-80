@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+    cout<<fun
 int dp[105];
 int f(int n)
 {
